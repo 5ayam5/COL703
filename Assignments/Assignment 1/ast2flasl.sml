@@ -26,7 +26,9 @@ let
   val _ =
     case arg of
          AST.HENCE (argList, res) => (writeList (argList, write);
-                                      write "THEREFORE "; writeProp (res, write))
+                                      write "THEREFORE ";
+                                      writeProp (res, write);
+                                      write ".")
   val _ = TextIO.closeOut file
 in
   ()
