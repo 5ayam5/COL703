@@ -5,7 +5,7 @@ structure FLASLParser =
         structure ParserData = FLASLLrVals.ParserData
         structure Lex = FLASLLex);
 
-fun main () =
+fun parseAndLex (inp: string) =
         let
             fun invoke lexstream =
                     let
@@ -33,14 +33,6 @@ fun main () =
                         else (print("Warning: Unconsumed input \n"); result)
                     end
 
-            val fileName = case CommandLine.arguments() of h::t => h | nil => "in"
-            val inputStream = TextIO.openIn fileName
-            val str = TextIO.input inputStream
-            val _ = TextIO.closeIn inputStream
-
-            val programList = parse (stringToLexer str)
         in
-            programList
+            (parse o stringToLexer) inp
         end
-
-val _ = main ();

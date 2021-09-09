@@ -5,4 +5,5 @@ AST.sml
 parser.yacc.sig
 parser.yacc.sml
 lexer.lex.sml
-main.sml
+binder.sml
+flasl2ast.sml
