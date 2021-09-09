@@ -17,7 +17,7 @@ structure Tokens = Tokens
 
 %%
 %header (functor FLASLLexFun(structure Tokens:FLASL_TOKENS));
-alpha = [-!#-'*-,/-~];
+alpha = [- ! #-' *-, /-~];
 ws = [\ \t];
 %%
 (\r\n)|\n   => (line := (!line) + 1; eolpos := yypos + size yytext; lex());

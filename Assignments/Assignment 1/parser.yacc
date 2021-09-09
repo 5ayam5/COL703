@@ -1,3 +1,17 @@
+(*
+    InputFile       ::= program EOF .
+    program         ::= proplist "THEREFORE" propt .
+    proplist        ::= {prop TERM} .
+    prop            ::= prop_noiff "IFF" prop | prop_noiff .
+    prop_noiff      ::= "IF" prop_noiff "THEN" prop_noiff "ELSE" prop_noiff | prop_noite .
+    prop_noite      ::= prop_noite "IF" prop_noif | "IF" prop_noite "THEN" prop_noite | prop_noif .
+    prop_noif       ::= prop_noif "OR" prop_noor | prop_noor .
+    prop_noor       ::= prop_noor "AND" prop_noand | prop_noand .
+    prop_noand      ::= "NOT" prop_noand | "(" prop ")" | atom .
+    atom            ::= "\"" {word} "\"" .
+    word            ::= {character} | "" .
+    character       ::= ["!" - "'"] | ["*" - "-"] | ["/" - "~"] .
+*)
 %%
 %name FLASL
 %term
