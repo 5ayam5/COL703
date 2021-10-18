@@ -1,0 +1,4 @@
+lexer.lex.*
+parser.yacc.*
+tableau
+*.out
