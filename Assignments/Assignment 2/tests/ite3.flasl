@@ -1,0 +1,1 @@
+NOT (IF ("prop1" OR NOT "prop1") THEN ("prop2" OR NOT "prop2") ELSE ("prop3" AND NOT "prop3")). THEREFORE "prop4".
