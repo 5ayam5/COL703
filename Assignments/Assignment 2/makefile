@@ -4,9 +4,6 @@ tableau: lexer.lex.sml parser.yacc.* AST.sml binder.sml proptableau.sml tableau.
 run_tableau: tableau
 	./tableau
 
-load: lexer.lex.sml parser.yacc.*
-	rlwrap sml loader.sml
-
 lexer.lex.sml: lexer.lex
 	mllex lexer.lex
 
