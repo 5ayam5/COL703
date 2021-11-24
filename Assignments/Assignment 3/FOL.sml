@@ -1,7 +1,3 @@
-Control.Print.printLength := 1000; (* set printing parameters so that *)
-Control.Print.printDepth := 1000; (* we’ll see all details *)
-Control.Print.stringDepth := 1000; (* and strings *)
-
 structure FOL =
 struct
   datatype term = VAR of string
@@ -245,7 +241,7 @@ struct
       val write = fn s => TextIO.output (outStream, s)
       val _ = write "digraph G {\n"
       val _ = write "nodesep = 0.5;\n"
-      val _ = write "ranksep = 0.5;\n"
+      val _ = write "ranksep = 0.4;\n"
       val _ = write "node [shape = plaintext];\n"
       val _ = List.map (fn (id, p) => write ("  " ^ Int.toString id ^ " [texlbl=\"\\underline{" ^ Int.toString id ^ ". $" ^ predToString p ^ "$}\"];\n")) (!vertices)
       val _ = write "subgraph dir {\n"
@@ -288,3 +284,11 @@ open FOL;
 (* val d = mktableau (HENCE ([ALL (VAR "x", AND (ATOM ("p", [VAR "x"]), NOT (ATOM ("p", [FUN ("b", [])]))))], ATOM ("p", [FUN ("c", [])]))) *)
 (* val e = mktableau (HENCE ([ALL (VAR "x", AND (ATOM ("p", [VAR "x"]), NOT (ATOM ("p", [FUN ("b", [])]))))], ATOM ("q", [FUN ("c", [])]))) *)
 (* val f = mktableau (HENCE ([EX (VAR "x", NOT (ATOM ("p", [FUN ("f", [FUN ("g", [VAR "x"])])])))], NOT (ALL (VAR "y", ATOM("p", [VAR "y"]))))) *)
+(* val g = mktableau (HENCE ([ATOM ("p", [FUN ("A", [])]), ALL (VAR "x", AND (ATOM ("p", [VAR "x"]), NOT (ATOM ("p", [FUN ("H", [])]))))], ATOM ("q", [FUN ("B", [])]))) *)
+(* val h = mktableau (HENCE ([ATOM ("p", [FUN ("A", [])]), ALL (VAR "x", AND (ATOM ("p", [VAR "x"]), NOT (ATOM ("p", [FUN ("H", [])]))))], ATOM ("p", [FUN ("B", [])]))) *)
+(* val i = mktableau (HENCE ([ALL (VAR "x", AND (ATOM ("p", [VAR "x"]), NOT (ATOM ("p", [FUN ("H", [])]))))], ATOM ("p", [FUN ("B", [])]))) *)
+(* val j = mktableau (HENCE ([ATOM ("p", [FUN ("a", [])])], EX (VAR "x", OR (ATOM ("p", [VAR "x"]), ATOM ("q", [VAR "x"]))))) *)
+(* val k = mktableau (HENCE ([ATOM ("p", [FUN ("c", [VAR "x"])])], ATOM ("p", [FUN ("c", [])]))) *)
+(* val l = mktableau (HENCE ([ATOM ("p", [FUN ("c", [VAR "x"])])], ATOM ("p", [FUN ("c", [CONST "a"])]))) *)
+(* val m = mktableau (HENCE ([ALL (VAR "x", ATOM ("p", [VAR "x"]))], ATOM ("p", [FUN ("a", [])]))) *)
+(* val n = mktableau (HENCE ([ALL (VAR "x", OR (ATOM ("p", [VAR "x"]), ATOM("q", [VAR "x"])))], OR (ATOM ("p", [FUN ("a", [])]), ATOM("q", [FUN ("a", [])])))) *)
