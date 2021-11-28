@@ -268,7 +268,7 @@ struct
     val _ = vertices := (rootid, NOT p)::(!vertices)
     val tableau = constructTableau (l, Node (rootid, Null, Null))
     val expandedTableau = expandTableau tableau
-    val solvedTableau = solveTableau (expandedTableau, [], [], [], false)
+    val solvedTableau = solveTableau (expandedTableau, [], [], [(CONST ("c" ^ getNewSymbol ()), 0)], false)
     val _ = vertices := List.rev (!vertices)
     val _ = makeTreeEdges (solvedTableau, rootid - 1)
   in
@@ -292,3 +292,16 @@ open FOL;
 (* val l = mktableau (HENCE ([ATOM ("p", [FUN ("c", [VAR "x"])])], ATOM ("p", [FUN ("c", [CONST "a"])]))) *)
 (* val m = mktableau (HENCE ([ALL (VAR "x", ATOM ("p", [VAR "x"]))], ATOM ("p", [FUN ("a", [])]))) *)
 (* val n = mktableau (HENCE ([ALL (VAR "x", OR (ATOM ("p", [VAR "x"]), ATOM("q", [VAR "x"])))], OR (ATOM ("p", [FUN ("a", [])]), ATOM("q", [FUN ("a", [])])))) *)
+
+(* val t1 = mktableau (HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), ALL(VAR("x"), ATOM("F", [VAR("x")]))],ATOM("G", [CONST("a")]))) *)
+(* val t2 = mktableau (HENCE([ALL(VAR("y"), ATOM("p", [VAR("y")]))], ALL(VAR("x"), ATOM("p", [FUN("f", [FUN("g", [VAR("x")])])])))) *)
+(* val t3 = mktableau (HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), EX(VAR("x"), AND(ATOM("F", [VAR("x")]), ATOM("H", [VAR("x")])))], EX(VAR("x"), AND(ATOM("F", [VAR("x")]), ATOM("H", [VAR("x")]))))) *)
+(* val t4 = mktableau (HENCE([], BIC(EX(VAR("x"), AND(ATOM("P", [VAR("x")]), ATOM("Q", [VAR("x")]))), AND(EX(VAR("x"), ATOM("P", [VAR("x")])), EX(VAR("x"), ATOM("Q", [VAR("x")])))))) *)
+(* val t5 = mktableau (HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), ALL(VAR("x"), ATOM("G", [VAR("x")]))],ATOM("F", [CONST("a")]))) *)
+(* val t6 = mktableau (HENCE([EX(VAR("x"), ALL(VAR("y"), ATOM("L", [VAR("x"), VAR("y")])))], ALL(VAR("x"), EX(VAR("y"), ATOM("L", [VAR("y"), VAR("x")]))))) *)
+
+(* val p1 = ALL(VAR("x"), COND(ATOM("p", [VAR("x")]), EX(VAR("y"), AND(ATOM("p", [VAR("y")]), ATOM("q", [VAR("y"), VAR("x")])))))
+val p2 = ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("r", [VAR("x"), CONST("a")])))
+val px = COND(ATOM("p", [VAR("x")]), COND(ATOM("p", [VAR("y")]), COND(ATOM("r", [VAR("y"), VAR("x")]), NOT(ATOM("q", [VAR("x"), VAR("y")])))));
+val p3 = ALL(VAR("x"), ALL(VAR("y"), px));
+val t7 = mktableau (HENCE([p1, p2, p3], NOT(ATOM("p", [CONST("a")])))) *)
