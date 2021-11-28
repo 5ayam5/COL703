@@ -293,7 +293,8 @@ open FOL;
 (* val m = mktableau (HENCE ([ALL (VAR "x", ATOM ("p", [VAR "x"]))], ATOM ("p", [FUN ("a", [])]))) *)
 (* val n = mktableau (HENCE ([ALL (VAR "x", OR (ATOM ("p", [VAR "x"]), ATOM("q", [VAR "x"])))], OR (ATOM ("p", [FUN ("a", [])]), ATOM("q", [FUN ("a", [])])))) *)
 
-(* val t1 = mktableau (HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), ALL(VAR("x"), ATOM("F", [VAR("x")]))],ATOM("G", [CONST("a")]))) *)
+(* val t11 = mktableau (HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), ALL(VAR("x"), ATOM("F", [VAR("x")]))],ATOM("G", [CONST("a")]))) *)
+(* val t12 = mktableau (HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), ALL(VAR("x"), ATOM("G", [VAR("x")]))],ATOM("F", [CONST("a")]))) *)
 (* val t2 = mktableau (HENCE([ALL(VAR("y"), ATOM("p", [VAR("y")]))], ALL(VAR("x"), ATOM("p", [FUN("f", [FUN("g", [VAR("x")])])])))) *)
 (* val t3 = mktableau (HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), EX(VAR("x"), AND(ATOM("F", [VAR("x")]), ATOM("H", [VAR("x")])))], EX(VAR("x"), AND(ATOM("F", [VAR("x")]), ATOM("H", [VAR("x")]))))) *)
 (* val t4 = mktableau (HENCE([], BIC(EX(VAR("x"), AND(ATOM("P", [VAR("x")]), ATOM("Q", [VAR("x")]))), AND(EX(VAR("x"), ATOM("P", [VAR("x")])), EX(VAR("x"), ATOM("Q", [VAR("x")])))))) *)
